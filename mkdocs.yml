@@ -1,0 +1,60 @@
+site_name: دليل الأردوينو العملي
+site_description: سلسلة دروس عملية للأردوينو باللغة العربية
+site_author: Arduino Kids
+repo_url: https://github.com/
+
+theme:
+  name: material
+  language: ar
+  direction: rtl
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: الوضع الداكن
+    - scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: الوضع الفاتح
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+
+extra_css:
+  - css/extra.css
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - tables
+  - attr_list
+  - md_in_html
+
+plugins:
+  - search
+
+nav:
+  - الرئيسية: index.md
+  - الدروس:
+      - شاشة الأرقام السباعية: seven_segment_guide.md
+      - المقاومة المتغيرة ومحرك السيرفو: servo_potentiometer.md
+      - مستشعر الحرارة LM35: lm35.md
+      - التواصل التسلسلي UART: UART_Serial_Buttons_Lesson.md
