@@ -90,7 +90,8 @@ Arduino A (المستقبل + LED)     Arduino B (المرسل + زر)
 | ساق الزر الأولى | **Pin 10** |
 | ساق الزر الثانية | **5V** |
 | مقاومة 10KΩ | بين **Pin 10** و **GND** |
-![زر موصل للسحب الجهد الي اسفل](images/connections/pulldown_button.gif)
+![زر موصول بتقنية السحب للأسفل (Pull-Down)](images/connections/pulldown_button.gif)
+**الشكل 3:** توصيل الزر بتقنية السحب للأسفل (Pull-Down) مع الأردوينو.
 
 > 🧠 **"سحب الجهد للأسفل" (Pull-Down)؟**
 >
