@@ -1,6 +1,7 @@
 site_name: دليل الأردوينو العملي
 site_description: سلسلة دروس عملية للأردوينو باللغة العربية
 site_author: Arduino Kids
+site_url: https://T4gamer.github.io/arduino_lvl_2/
 repo_url: https://github.com/T4gamer/arduino_lvl_2
 
 theme:

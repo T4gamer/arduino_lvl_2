@@ -48,6 +48,7 @@ Serial.read();             // نقرأ حرفاً واحداً
 | كابل USB | 2 | لرفع الكود على كل Arduino |
 
 ![شكل لوحة الأردوينو أونو](images/parts/uno.jpg)
+**الشكل 1:** شكل لوحة الأردوينو أونو (Arduino Uno).
 
 ---
 
@@ -82,6 +83,7 @@ Arduino A (المستقبل + LED)     Arduino B (المرسل + زر)
 الزر موصول بتقنية **السحب للأسفل (Pull-Down)**:
 
 ![شكل الزر الضاغط](images/parts/push_button.jpg)
+**الشكل 2:** شكل الزر الضاغط (Push Button).
 
 | المكون | التوصيل |
 |--------|---------|
@@ -103,6 +105,7 @@ Arduino A (المستقبل + LED)     Arduino B (المرسل + زر)
 ## 🖼️ مخطط التوصيل الكامل
 
 ![مخطط توصيلات UART بين Arduinoين](images/connections/UART_CONNECTION.png)
+**الشكل 4:** مخطط توصيلات UART بين لوحين أردوينو.
 
 ---
 
