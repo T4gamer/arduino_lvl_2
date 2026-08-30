@@ -1,0 +1,14 @@
+:root {
+  --md-text-font: "Tahoma", "Segoe UI", system-ui, sans-serif;
+}
+
+.md-typeset {
+  line-height: 1.9;
+  font-size: 1.05rem;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  line-height: 1.5;
+}

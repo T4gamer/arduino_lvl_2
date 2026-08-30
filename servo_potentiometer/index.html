@@ -1,0 +1,1358 @@
+
+<!doctype html>
+<html lang="ar" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="سلسلة دروس عملية للأردوينو باللغة العربية">
+      
+      
+        <meta name="author" content="Arduino Kids">
+      
+      
+      
+        <link rel="prev" href="../seven_segment_guide/">
+      
+      
+        <link rel="next" href="../lm35/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>المقاومة المتغيرة ومحرك السيرفو - دليل الأردوينو العملي</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="rtl" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          انتقل إلى المحتوى
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="عنوان العارضة">
+    <a href=".." title="دليل الأردوينو العملي" class="md-header__button md-logo" aria-label="دليل الأردوينو العملي" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            دليل الأردوينو العملي
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              المقاومة المتغيرة ومحرك السيرفو
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="الوضع الداكن"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="الوضع الداكن" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="الوضع الفاتح"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="الوضع الفاتح" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="بحث" placeholder="بحث" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="إبحث">
+        
+        <button type="reset" class="md-search__icon md-icon" title="مسح كلي" aria-label="مسح كلي" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            بدء البحث
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/T4gamer/arduino_lvl_2" title="اذهب إلى المصدر" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="تصفح" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="دليل الأردوينو العملي" class="md-nav__button md-logo" aria-label="دليل الأردوينو العملي" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    دليل الأردوينو العملي
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/T4gamer/arduino_lvl_2" title="اذهب إلى المصدر" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    الرئيسية
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    الدروس
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    الدروس
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seven_segment_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    شاشة الأرقام السباعية
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    المقاومة المتغيرة ومحرك السيرفو
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    المقاومة المتغيرة ومحرك السيرفو
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="جدول المحتويات">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      جدول المحتويات
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 مقدمة: مرحباً بكم في درس اليوم 🚀
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#potentiometer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 الجزء الأول: ما هي المقاومة المتغيرة (Potentiometer)؟
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 الجزء الأول: ما هي المقاومة المتغيرة (Potentiometer)؟">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        كيف تعمل؟ 🤔
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        شكلها وأرجلها:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#led-serial-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 الجزء الثاني: التحكم بشدة إضاءة الـ LED عبر المنفذ التسلسلي (Serial Control)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💻 الجزء الثاني: التحكم بشدة إضاءة الـ LED عبر المنفذ التسلسلي (Serial Control)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 التوصيل:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 الكود:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#led" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚡ الجزء الثالث: ربط المقاومة المتغيرة للتحكم بالـ LED
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚡ الجزء الثالث: ربط المقاومة المتغيرة للتحكم بالـ LED">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 التوصيل:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 مشكلة التحويل بين النطاقات
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 الكود:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servo-motor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🦾 الجزء الرابع: التحكم في حركة محرك السيرفو (Servo Motor)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🦾 الجزء الرابع: التحكم في حركة محرك السيرفو (Servo Motor)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ما هو محرك السيرفو؟ 🤖
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 التوصيل:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 الكود:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏋️‍♂️ تمارين وتحديات تطبيقية
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏋️‍♂️ تمارين وتحديات تطبيقية">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 التمرين الأول: قفل إلكتروني بمحرك 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 التمرين الثاني: التحكم بسرعة الوميض ⏱️
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 ملخص الدرس
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 حقائق علمية ومهنية!
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lm35/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    مستشعر الحرارة LM35
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UART_Serial_Buttons_Lesson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    التواصل التسلسلي UART
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L9110S_motor_driver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    بطاقة تحريك المحركات L9110S
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="جدول المحتويات">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      جدول المحتويات
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 مقدمة: مرحباً بكم في درس اليوم 🚀
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#potentiometer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 الجزء الأول: ما هي المقاومة المتغيرة (Potentiometer)؟
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 الجزء الأول: ما هي المقاومة المتغيرة (Potentiometer)؟">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        كيف تعمل؟ 🤔
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        شكلها وأرجلها:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#led-serial-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 الجزء الثاني: التحكم بشدة إضاءة الـ LED عبر المنفذ التسلسلي (Serial Control)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💻 الجزء الثاني: التحكم بشدة إضاءة الـ LED عبر المنفذ التسلسلي (Serial Control)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 التوصيل:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 الكود:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#led" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚡ الجزء الثالث: ربط المقاومة المتغيرة للتحكم بالـ LED
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚡ الجزء الثالث: ربط المقاومة المتغيرة للتحكم بالـ LED">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 التوصيل:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 مشكلة التحويل بين النطاقات
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 الكود:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servo-motor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🦾 الجزء الرابع: التحكم في حركة محرك السيرفو (Servo Motor)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🦾 الجزء الرابع: التحكم في حركة محرك السيرفو (Servo Motor)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ما هو محرك السيرفو؟ 🤖
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 التوصيل:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 الكود:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏋️‍♂️ تمارين وتحديات تطبيقية
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏋️‍♂️ تمارين وتحديات تطبيقية">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 التمرين الأول: قفل إلكتروني بمحرك 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 التمرين الثاني: التحكم بسرعة الوميض ⏱️
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 ملخص الدرس
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 حقائق علمية ومهنية!
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">🛠️ دليل الأردوينو العملي: التحكم الدقيق باستخدام المقاومة المتغيرة ومحرك السيرفو</h1>
+<hr />
+<h2 id="_2">📌 مقدمة: مرحباً بكم في درس اليوم 🚀</h2>
+<p>في الدروس السابقة، تعلمنا كيفية استخدام الأزرار، والتي تعطي إشارة إما تشغيل (1) أو إطفاء (0).<br />
+اليوم، سننتقل إلى مستوى متقدم من التحكم؛ سنتعلم كيف نتحكم في المكونات الإلكترونية <strong>بدرجات متفاوتة ومحددة بدقة</strong> (مثل التحكم التدريجي في شدة إضاءة لمبة أو زاوية دوران محرك).</p>
+<p>خطتنا في هذا الدرس ستكون على أربع مراحل:
+1. <strong>المرحلة الأولى:</strong> فهم طبيعة وآلية عمل المقاومة المتغيرة.
+2. <strong>المرحلة الثانية:</strong> التحكم بشدة إضاءة الـ LED عن طريق إرسال أوامر رقمية من الكمبيوتر.
+3. <strong>المرحلة الثالثة:</strong> استبدال أوامر الكمبيوتر بالمقاومة المتغيرة للتحكم الفعلي بالإضاءة.
+4. <strong>المرحلة الرابعة:</strong> استخدام المقاومة المتغيرة للتحكم في حركة محرك السيرفو (Servo Motor).</p>
+<hr />
+<h2 id="potentiometer">🧠 الجزء الأول: ما هي المقاومة المتغيرة (Potentiometer)؟</h2>
+<p>تخيل المفتاح الدوّار الذي تستخدمه للتحكم في مستوى الصوت في الراديو، أو لضبط مستوى إضاءة غرفتك.. هذا المفتاح هو في الحقيقة <strong>مقاومة متغيرة</strong>.</p>
+<p><img alt="شكل المقاومة المتغيرة" src="../img/parts/potentiometer.jpg" /></p>
+<h3 id="_3">كيف تعمل؟ 🤔</h3>
+<p>كما تعلمنا سابقاً، وظيفة المقاومة هي تقليل مرور التيار الكهربائي. ولكن في <strong>المقاومة المتغيرة</strong>، يمكنك تغيير قيمة هذه المقاومة يدوياً عبر لف المفتاح:
+- عند لف المفتاح باتجاه أحد الأطراف (مثلاً أقصى اليسار): تكون قيمة المقاومة في أعلى مستوياتها، فلا يمر التيار (القراءة 0).
+- عند لف المفتاح للطرف الآخر (أقصى اليمين): تنعدم قيمة المقاومة تقريباً، فيمر التيار بالكامل (القراءة القصوى 1023).</p>
+<h3 id="_4">شكلها وأرجلها:</h3>
+<p>تحتوي هذه القطعة على <strong>3 أرجل</strong>:
+1. <strong>الرجل الأولى (VCC):</strong> تُوصل بمصدر الطاقة (5V).
+2. <strong>الرجل الثانية (الوسطى):</strong> وهي الرجل الأهم، تُوصل بأحد الأرجل التماثلية (Analog) في الأردوينو (مثل A0). هذه الرجل هي التي تقرأ التغيير في قيمة المقاومة.
+3. <strong>الرجل الثالثة (GND):</strong> تُوصل بالطرف السالب (GND).</p>
+<blockquote>
+<p>💡 <strong>مفهوم مهم: الإشارات التماثلية (Analog):</strong><br />
+الأزرار تعطي إشارات رقمية (Digital): إما <code>0</code> أو <code>1</code> فقط.<br />
+أما المقاومة المتغيرة فتعطي إشارات تماثلية (Analog): تتراوح قيمتها بين <code>0</code> و <code>1023</code> (أي أنها توفر 1024 درجة قراءة مختلفة)، مما يمنحنا تحكماً دقيقاً جداً.</p>
+</blockquote>
+<hr />
+<h2 id="led-serial-control">💻 الجزء الثاني: التحكم بشدة إضاءة الـ LED عبر المنفذ التسلسلي (Serial Control)</h2>
+<p>قبل أن نربط المقاومة المتغيرة، يجب أن نفهم أولاً كيف نتحكم في "شدة" إضاءة اللمبة برمجياً باستخدام الكمبيوتر.<br />
+تقنية التحكم في شدة الإضاءة تُعرف بـ <strong>PWM</strong> (التعديل بعرض النبضة - Pulse Width Modulation). هذه التقنية تعتمد على فتح وإغلاق الدائرة الكهربائية بسرعة عالية جداً، مما يسمح لنا بالتحكم الفعلي في شدة الإضاءة التي تتراوح قيمتها بين 0 (مطفأة) و 255 (إضاءة قصوى).</p>
+<h3 id="_5">📌 التوصيل:</h3>
+<p>وصّل الطرف الموجب للـ LED بـ <strong>الرجل 9</strong> (لأن الرجل 9 يدعم تقنية PWM)، والطرف السالب بمقاومة 220Ω ثم بـ GND.</p>
+<h3 id="_6">📝 الكود:</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cm">/*</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cm"> * مشروع: التحكم بشدة إضاءة اللمبة عبر الرسائل النصية</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cm"> * نرسل قيمة رقمية من 0 إلى 255 من شاشة الكمبيوتر</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cm"> */</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kt">int</span><span class="w"> </span><span class="n">ledPin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span><span class="w"> </span><span class="c1">// الرجل 9 يدعم التحكم بشدة الإضاءة (PWM)</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">ledPin</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span><span class="w"> </span><span class="c1">// فتح خط التواصل مع الكمبيوتر</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;أدخل رقماً بين 0 و 255 للتحكم بشدة الإضاءة:&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">}</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="c1">// التحقق من وجود رسالة جديدة من الكمبيوتر</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="c1">// قراءة الرقم المُدخل</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">parseInt</span><span class="p">();</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="c1">// التأكد من أن الرقم ضمن النطاق المسموح</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">brightness</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">brightness</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">      </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ledPin</span><span class="p">,</span><span class="w"> </span><span class="n">brightness</span><span class="p">);</span><span class="w"> </span><span class="c1">// تطبيق شدة الإضاءة</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;تم ضبط شدة الإضاءة على: &quot;</span><span class="p">);</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">brightness</span><span class="p">);</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;خطأ: القيمة المدخلة يجب أن تكون بين 0 و 255&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="p">}</span>
+</code></pre></div>
+<strong>التطبيق:</strong> افتح نافذة <strong>Serial Monitor</strong> في برنامج الأردوينو، أدخل الرقم <code>50</code> واضغط Enter، ثم جرّب الرقم <code>200</code> ولاحظ الفرق في شدة الإضاءة.</p>
+<hr />
+<h2 id="led">⚡ الجزء الثالث: ربط المقاومة المتغيرة للتحكم بالـ LED</h2>
+<p>الآن سننتقل من التحكم الافتراضي (عبر الكمبيوتر) إلى التحكم العملي (عبر المقاومة المتغيرة).</p>
+<h3 id="_7">📌 التوصيل:</h3>
+<ol>
+<li><strong>المقاومة المتغيرة:</strong>  </li>
+<li>الرجل اليمنى → <code>5V</code>  </li>
+<li>الرجل الوسطى → <code>A0</code>  </li>
+<li>الرجل اليسرى → <code>GND</code>  </li>
+<li><strong>الـ LED:</strong> يبقى موصولاً بـ <strong>الرجل 9</strong> كما في التجربة السابقة.</li>
+</ol>
+<h3 id="_8">🧩 مشكلة التحويل بين النطاقات</h3>
+<p>المقاومة المتغيرة تعطي الأردوينو قراءات من <code>0 إلى 1023</code>.<br />
+أما دالة التحكم بالإضاءة <code>analogWrite</code> فتقبل أرقاماً من <code>0 إلى 255</code> فقط.<br />
+إذا استخدمنا القراءة مباشرة من المقاومة، سنحصل على نتائج غير صحيحة.<br />
+الحل البرمجي هو استخدام دالة التحويل <strong><code>map()</code></strong>.</p>
+<h3 id="_9">📝 الكود:</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cm">/*</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cm"> * مشروع: التحكم بشدة الإضاءة باستخدام المقاومة المتغيرة</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cm"> */</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kt">int</span><span class="w"> </span><span class="n">potPin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A0</span><span class="p">;</span><span class="w">    </span><span class="c1">// رجل المقاومة المتغيرة</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kt">int</span><span class="w"> </span><span class="n">ledPin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span><span class="w">     </span><span class="c1">// رجل اللمبة</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">ledPin</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="c1">// الأرجل التماثلية (مثل A0) لا تحتاج إلى تعريف كـ INPUT افتراضياً</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">}</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="c1">// 1. قراءة القيمة الحالية للمقاومة المتغيرة (من 0 إلى 1023)</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">potValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analogRead</span><span class="p">(</span><span class="n">potPin</span><span class="p">);</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">  </span><span class="c1">// 2. تحويل القيمة من نطاق (0-1023) لتتناسب مع نطاق الإضاءة (0-255)</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="n">potValue</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1023</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">  </span><span class="c1">// 3. تطبيق شدة الإضاءة على اللمبة</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ledPin</span><span class="p">,</span><span class="w"> </span><span class="n">brightness</span><span class="p">);</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">  </span><span class="c1">// (اختياري) طباعة القيمة على شاشة الكمبيوتر للمتابعة</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">  </span><span class="c1">// Serial.println(brightness);</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">  </span><span class="c1">// delay(50);</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>🛠️ <strong>التجربة:</strong> قم بلف مفتاح المقاومة المتغيرة ببطء من أقصى اليسار إلى أقصى اليمين، ولاحظ كيف تتغير شدة إضاءة اللمبة بشكل تدريجي ودقيق. أنت الآن قمت ببناء دائرة تحكم في الإضاءة (Dimmer).</p>
+</blockquote>
+<hr />
+<h2 id="servo-motor">🦾 الجزء الرابع: التحكم في حركة محرك السيرفو (Servo Motor)</h2>
+<p>بما أننا أصبحنا قادرين على قراءة المقاومة المتغيرة واستخراج قيم دقيقة منها، سنستخدم هذه القيم الآن للتحكم في حركة ميكانيكية دقيقة عبر <strong>محرك السيرفو</strong>.</p>
+<h3 id="_10">ما هو محرك السيرفو؟ 🤖</h3>
+<p>المحركات العادية تدور بشكل مستمر ولا تتوقف عند زاوية معينة. أما <strong>محرك السيرفو</strong> فهو محرك ذكي مصمم للوصول إلى زوايا محددة بدقة والثبات عليها.<br />
+يُستخدم في التطبيقات التي تتطلب دقة مثل: أذرع الروبوت، الموجهات (الستيرنج) في السيارات ذات التحكم عن بعد، والأنظمة الصناعية.</p>
+<p><img alt="شكل محرك السيرفو" src="../img/parts/servo.png" /></p>
+<h3 id="_11">📌 التوصيل:</h3>
+<blockquote>
+<p>⚠️ <strong>تنبيه:</strong> لضمان عمل الدائرة بشكل صحيح، قم بفصل الـ LED والمقاومة 220Ω من الرجل 9 قبل ربط المحرك.</p>
+</blockquote>
+<p>تحتوي وصلة الـ Servo على 3 أسلاك ملونة:
+| لون السلك | الوظيفة | مكان التوصيل في الأردوينو |
+|:---:|:---|:---|
+| <strong>أحمر</strong> | الطاقة الموجبة (VCC) | <strong>5V</strong> |
+| <strong>بني/أسود</strong> | الطرف السالب (GND) | <strong>GND</strong> |
+| <strong>أصفر/برتقالي</strong> | إشارة التحكم (Signal) | <strong>الرجل 9</strong> |</p>
+<p><em>(المقاومة المتغيرة تبقى موصلة كما هي على A0، 5V، و GND).</em></p>
+<p><img alt="مخطط توصيل محرك السيرفو بالأردوينو" src="../img/connections/servo_connection.png" /></p>
+<h3 id="_12">📝 الكود:</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cm">/*</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="cm"> * مشروع: التحكم بمحرك السيرفو باستخدام المقاومة المتغيرة</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cm"> * سنستخدم مكتبة جاهزة لتسهيل التعامل مع المحرك</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cm"> */</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Servo.h&gt;</span><span class="c1"> // استدعاء مكتبة السيرفو</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">Servo</span><span class="w"> </span><span class="n">myServo</span><span class="p">;</span><span class="w">     </span><span class="c1">// تعريف كائن يمثل المحرك</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="kt">int</span><span class="w"> </span><span class="n">potPin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A0</span><span class="p">;</span><span class="w">   </span><span class="c1">// رجل المقاومة المتغيرة</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span><span class="c1">// ربط المحرك بالرجل 9</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">  </span><span class="n">myServo</span><span class="p">.</span><span class="n">attach</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span><span class="w"> </span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="p">}</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">  </span><span class="c1">// 1. قراءة قيمة المقاومة المتغيرة (من 0 إلى 1023)</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">potValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analogRead</span><span class="p">(</span><span class="n">potPin</span><span class="p">);</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">  </span><span class="c1">// 2. تحويل القيمة لتناسب زوايا السيرفو</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">  </span><span class="c1">// محرك السيرفو يعمل عادة على زوايا من 0 إلى 180 درجة</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="n">potValue</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1023</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="p">);</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">  </span><span class="c1">// 3. إرسال الأمر للمحرك بالتحرك إلى الزاوية المحسوبة</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">  </span><span class="n">myServo</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">angle</span><span class="p">);</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">  </span><span class="c1">// إعطاء المحرك وقتاً قصيراً للانتقال للزاوية الجديدة بسلاسة</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span><span class="w"> </span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="p">}</span>
+</code></pre></div>
+<strong>نتيجة العمل:</strong> عند لف مفتاح المقاومة المتغيرة، سيتحرك ذراع المحرك تبعاً لحركتك بدقة ويتوقف فور توقفك عن اللف.</p>
+<hr />
+<h2 id="_13">🏋️‍♂️ تمارين وتحديات تطبيقية</h2>
+<h3 id="_14">🎯 التمرين الأول: قفل إلكتروني بمحرك 🔒</h3>
+<p><strong>المطلوب:</strong> دمج مفهوم الرسائل النصية (الجزء الثاني) مع محرك السيرفو (الجزء الرابع).<br />
+<strong>فكرة البرنامج:</strong> افتح نافذة Serial، إذا أدخل المستخدم الرقم <code>1234</code> يتحرك السيرفو إلى زاوية 90 درجة (يمثل فتح الباب)، وإذا أدخل أي رقم آخر يعود السيرفو إلى زاوية 0 درجة (إغلاق الباب).</p>
+<h3 id="_15">🎯 التمرين الثاني: التحكم بسرعة الوميض ⏱️</h3>
+<p><strong>المطلوب:</strong> أعد توصيل الـ LED على رجل آخر (مثلاً الرجل 10).<br />
+<strong>فكرة البرنامج:</strong> بدلاً من استخدام المقاومة المتغيرة للتحكم في <em>شدة</em> الإضاءة، استخدمها للتحكم في <em>سرعة</em> الوميض (Blink). لف المقاومة لليمين فيزداد معدل الوميض بسرعة، ولفها لليسار فيصبح الوميض بطيئاً جداً. <em>(تلميح: استخدم قيمة المقاومة المتغيرة كمدخل لدالة <code>delay()</code>).</em></p>
+<hr />
+<h2 id="_16">📝 ملخص الدرس</h2>
+<table>
+<thead>
+<tr>
+<th>النقطة</th>
+<th>الشرح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>المقاومة المتغيرة (Potentiometer)</strong></td>
+<td>مقاومة يمكن تغيير قيمتها يدوياً، تعطي الأردوينو قراءات تماثلية بين 0 و 1023.</td>
+</tr>
+<tr>
+<td><strong>التحكم بـ PWM</strong></td>
+<td>تقنية إلكترونية للتحكم في شدة الإضاءة أو سرعة المحركات عبر إشارات تتراوح بين 0 و 255.</td>
+</tr>
+<tr>
+<td><strong>دالة التحويل <code>map()</code></strong></td>
+<td>دالة برمجية تقوم بتحويل القيم من نطاق معين (مثل 0-1023) إلى نطاق آخر (مثل 0-255 أو 0-180).</td>
+</tr>
+<tr>
+<td><strong>محرك السيرفو (Servo)</strong></td>
+<td>محرك دقيق يتحرك ويتوقف عند زوايا محددة (غالباً من 0 إلى 180 درجة).</td>
+</tr>
+<tr>
+<td><strong>المكتبات (Libraries)</strong></td>
+<td>أكواد برمجية مكتوبة مسبقاً (مثل <code>Servo.h</code>) يتم استدعاؤها لتسهيل البرمجة والتحكم بالمكونات المعقدة.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_17">🎓 حقائق علمية ومهنية!</h2>
+<ul>
+<li>🌟 تقنية الـ PWM لا تقتصر على اللمبات فقط، بل تُستخدم بشكل أساسي في التحكم بسرعة المحركات الكهربائية المختلفة، وفي توليد النغمات الصوتية عبر السماعات!</li>
+<li>🦾 محرك السيرفو يحتوي داخله على دائرة إلكترونية صغيرة وعلبة تروس. على الرغم من قوته، إلا أن إجباره على الدوران يدوياً أثناء عمله قد يتسبب في تلف التروس الصغيرة داخله.</li>
+<li>🎮 في أجهزة التحكم بالألعاب (مثل أجهزة PlayStation)، الأزرار التي تستجيب لقوة الضغط (مثل زر التسديد) تعتمد في الأساس على تقنية مشابهة للمقاومة المتغيرة لقراءة مدى ضغط اللاعب بدقة.</li>
+</ul>
+<hr />
+<blockquote>
+<p>🚀 <strong>أحسنتم!</strong> لقد تعلمتم اليوم كيف تربطوا العالم المادي (المقاومات المتغيرة) بالتحكم البرمجي الدقيق (شدة الإضاءة، زوايا الحركة). حاولوا تطبيق ما تعلمتموه مع شاشة الأرقام السباعية (7-Segment) من الدرس الماضي لبناء نظام تحكم متكامل. بالتوفيق في المعمل! ⚡💻🔧</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  عد إلى الأعلى
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u062a\u0645 \u0627\u0644\u0646\u0633\u062e \u0627\u0644\u0649 \u0627\u0644\u062d\u0627\u0641\u0638\u0629", "clipboard.copy": "\u0646\u0633\u062e \u0625\u0644\u0649 \u0627\u0644\u062d\u0627\u0641\u0638\u0629", "search.result.more.one": "\u0623\u0643\u062b\u0631 \u0645\u0646 1 \u0641\u064a \u0647\u0630\u0647 \u0627\u0644\u0635\u0641\u062d\u0629", "search.result.more.other": "\u0623\u0643\u062b\u0631 \u0645\u0646 # \u0641\u064a \u0647\u0630\u0647 \u0627\u0644\u0635\u0641\u062d\u0629", "search.result.none": "\u0644\u0627 \u062a\u0648\u062c\u062f \u0646\u062a\u0627\u0626\u062c", "search.result.one": "\u0646\u062a\u0627\u0626\u062c \u0627\u0644\u0628\u062d\u062b \u0645\u0633\u062a\u0646\u062f \u0648\u0627\u062d\u062f", "search.result.other": "\u0646\u062a\u0627\u0626\u062c \u0627\u0644\u0628\u062d\u062b # \u0645\u0633\u062a\u0646\u062f\u0627\u062a", "search.result.placeholder": "\u0627\u0643\u062a\u0628 \u0644\u0628\u062f\u0621 \u0627\u0644\u0628\u062d\u062b", "search.result.term.missing": "\u0645\u0641\u0642\u0648\u062f", "select.version": "\u0625\u062e\u062a\u0631 \u0627\u0644\u0625\u0635\u062f\u0627\u0631"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
