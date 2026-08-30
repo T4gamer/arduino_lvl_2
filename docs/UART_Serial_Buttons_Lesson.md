@@ -47,6 +47,8 @@ Serial.read();             // نقرأ حرفاً واحداً
 | أسلاك توصيل | 5+ | للتوصيل الداخلي والخارجي |
 | كابل USB | 2 | لرفع الكود على كل Arduino |
 
+![شكل لوحة الأردوينو أونو](img/parts/uno.jpg)
+
 ---
 
 ## 🔗 التوصيل بين الـ Arduinoين
@@ -79,12 +81,14 @@ Arduino A (المستقبل + LED)     Arduino B (المرسل + زر)
 
 الزر موصول بتقنية **السحب للأسفل (Pull-Down)**:
 
+![شكل الزر الضاغط](img/parts/push_button.jpg)
+
 | المكون | التوصيل |
 |--------|---------|
 | ساق الزر الأولى | **Pin 10** |
 | ساق الزر الثانية | **5V** |
 | مقاومة 10KΩ | بين **Pin 10** و **GND** |
-![زر موصل للسحب الجهد الي اسفل ](img/pulldown_button.gif)
+![زر موصل للسحب الجهد الي اسفل ](img/connections/pulldown_button.gif)
 
 > 🧠 **"سحب الجهد للأسفل" (Pull-Down)؟**
 >
@@ -98,7 +102,7 @@ Arduino A (المستقبل + LED)     Arduino B (المرسل + زر)
 
 ## 🖼️ مخطط التوصيل الكامل
 
-![مخطط توصيلات UART بين Arduinoين](img/UART_CONNECTION.png)
+![مخطط توصيلات UART بين Arduinoين](img/connections/UART_CONNECTION.png)
 
 ---
 
