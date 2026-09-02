@@ -1,0 +1,1695 @@
+
+<!doctype html>
+<html lang="ar" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="سلسلة دروس عملية للأردوينو باللغة العربية">
+      
+      
+        <meta name="author" content="Arduino Kids">
+      
+      
+        <link rel="canonical" href="https://T4gamer.github.io/arduino_lvl_2/matrix_keypad_3x4/">
+      
+      
+        <link rel="prev" href="../L9110S_motor_driver/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>لوحة المفاتيح المصفوفية 3×4 - دليل الأردوينو العملي</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="rtl" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#34" class="md-skip">
+          انتقل إلى المحتوى
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="عنوان العارضة">
+    <a href=".." title="دليل الأردوينو العملي" class="md-header__button md-logo" aria-label="دليل الأردوينو العملي" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            دليل الأردوينو العملي
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              لوحة المفاتيح المصفوفية 3×4
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="الوضع الداكن"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="الوضع الداكن" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="الوضع الفاتح"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="الوضع الفاتح" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="بحث" placeholder="بحث" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="إبحث">
+        
+        <button type="reset" class="md-search__icon md-icon" title="مسح كلي" aria-label="مسح كلي" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            بدء البحث
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/T4gamer/arduino_lvl_2" title="اذهب إلى المصدر" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="تصفح" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="دليل الأردوينو العملي" class="md-nav__button md-logo" aria-label="دليل الأردوينو العملي" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    دليل الأردوينو العملي
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/T4gamer/arduino_lvl_2" title="اذهب إلى المصدر" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    الرئيسية
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    الدروس
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    الدروس
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seven_segment_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    شاشة الأرقام السباعية
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../servo_potentiometer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    المقاومة المتغيرة ومحرك السيرفو
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lm35/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    مستشعر الحرارة LM35
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UART_Serial_Buttons_Lesson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    التواصل التسلسلي UART
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L9110S_motor_driver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    بطاقة تحريك المحركات L9110S
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    لوحة المفاتيح المصفوفية 3×4
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    لوحة المفاتيح المصفوفية 3×4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="جدول المحتويات">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      جدول المحتويات
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 مقدمة: مرحباً بكم في درس اليوم 🚀
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧰 القطع المطلوبة
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix-keypad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 الجزء الأول: ما هي لوحة المفاتيح المصفوفية (Matrix Keypad)؟
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 الجزء الأول: ما هي لوحة المفاتيح المصفوفية (Matrix Keypad)؟">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        أرجل اللوحة:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 الجزء الثاني: نبني الماسح بأيدينا (مع مقاومات السحب للأسفل)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💻 الجزء الثاني: نبني الماسح بأيدينا (مع مقاومات السحب للأسفل)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 التوصيل:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 الكود:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keypad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚡ الجزء الثالث: الطريقة الاحترافية — مكتبة Keypad بدون مقاومات!
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚡ الجزء الثالث: الطريقة الاحترافية — مكتبة Keypad بدون مقاومات!">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📥 تثبيت المكتبة:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 التوصيل (مباشر تماماً!):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 الكود:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔐 الجزء الرابع: الخزنة السرية — قفل بكلمة مرور (مشروع ختامي)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔐 الجزء الرابع: الخزنة السرية — قفل بكلمة مرور (مشروع ختامي)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        الفكرة:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 التوصيل الإضافي (فوق توصيل لوحة المفاتيح المباشر من الشكل 4):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 الكود:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏋️‍♂️ تمارين وتحديات تطبيقية
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏋️‍♂️ تمارين وتحديات تطبيقية">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 التمرين الأول: شاشة عرض رقمية 🖥️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 التمرين الثاني: لوحة تحكم سرعة المحرك 🚗
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 التمرين الثالث: منظومة أمان ذكية 🌡️
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 ملخص الدرس
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 حقائق علمية ومهنية!
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="جدول المحتويات">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      جدول المحتويات
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 مقدمة: مرحباً بكم في درس اليوم 🚀
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧰 القطع المطلوبة
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix-keypad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 الجزء الأول: ما هي لوحة المفاتيح المصفوفية (Matrix Keypad)؟
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 الجزء الأول: ما هي لوحة المفاتيح المصفوفية (Matrix Keypad)؟">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        أرجل اللوحة:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 الجزء الثاني: نبني الماسح بأيدينا (مع مقاومات السحب للأسفل)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💻 الجزء الثاني: نبني الماسح بأيدينا (مع مقاومات السحب للأسفل)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 التوصيل:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 الكود:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keypad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚡ الجزء الثالث: الطريقة الاحترافية — مكتبة Keypad بدون مقاومات!
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚡ الجزء الثالث: الطريقة الاحترافية — مكتبة Keypad بدون مقاومات!">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📥 تثبيت المكتبة:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 التوصيل (مباشر تماماً!):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 الكود:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔐 الجزء الرابع: الخزنة السرية — قفل بكلمة مرور (مشروع ختامي)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔐 الجزء الرابع: الخزنة السرية — قفل بكلمة مرور (مشروع ختامي)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        الفكرة:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 التوصيل الإضافي (فوق توصيل لوحة المفاتيح المباشر من الشكل 4):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 الكود:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏋️‍♂️ تمارين وتحديات تطبيقية
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏋️‍♂️ تمارين وتحديات تطبيقية">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 التمرين الأول: شاشة عرض رقمية 🖥️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 التمرين الثاني: لوحة تحكم سرعة المحرك 🚗
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 التمرين الثالث: منظومة أمان ذكية 🌡️
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 ملخص الدرس
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 حقائق علمية ومهنية!
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="34">🛠️ دليل الأردوينو العملي: لوحة المفاتيح المصفوفية 3×4 — اثنا عشر زراً بسبعة أرجل فقط!</h1>
+<hr />
+<h2 id="_1">📌 مقدمة: مرحباً بكم في درس اليوم 🚀</h2>
+<p>في الدروس السابقة، تعلمنا كيف نقرأ <strong>زراً واحداً</strong> ونستقبل الأوامر من الكمبيوتر، وكيف نتحكم بالإضاءة والمحركات والحرارة، بل وتحدثنا مع أردوينو آخر عبر السلك!</p>
+<p>لكن، هل لاحظتم شيئاً؟ كل مرة استخدمنا فيها زراً، احتاج الزر إلى <strong>رجل كاملة</strong> في الأردوينو. هذا مقبول لزر أو زرين.. لكن ماذا لو أردنا بناء <strong>قفل بكلمة سر</strong> يحتاج 12 زراً؟ أو <strong>آلة حاسبة</strong>؟ سنجد أن الأردوينو أونو (الذي يملك حوالي 12 رجلاً رقمية صالحة) قد نفدت أرجله قبل أن نبدأ!</p>
+<p>اليوم سنتعلم حيلة ذكية يستخدمها المهندسون في كل مكان — من كيبورد الكمبيوتر أمامك إلى الصراف الآلي — تسمى <strong>المصفوفة (Matrix)</strong>: سنقرأ <strong>12 زراً باستخدام 7 أرجل فقط</strong>!</p>
+<p>خطتنا في هذا الدرس ستكون على أربع مراحل:
+1. <strong>المرحلة الأولى:</strong> فهم فكرة "المصفوفة" وكيف نحدد الزر المضغوط من تقاطع صف وعمود.
+2. <strong>المرحلة الثانية:</strong> بناء الماسح (Scanner) بأيدينا مع مقاومات السحب للأسفل — نفس فكرة درس UART.
+3. <strong>المرحلة الثالثة:</strong> الطريقة الاحترافية: مكتبة <code>Keypad</code> والتوصيل المباشر <strong>بدون أي مقاومات</strong>.
+4. <strong>المرحلة الرابعة:</strong> مشروع ختامي: <strong>خزنة سرية بكلمة مرور</strong> تُفتح بمحرك السيرفو!</p>
+<hr />
+<h2 id="_2">🧰 القطع المطلوبة</h2>
+<table>
+<thead>
+<tr>
+<th>القطعة</th>
+<th>العدد</th>
+<th>ملاحظة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arduino Uno</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>لوحة مفاتيح مصفوفية 3×4</td>
+<td>1</td>
+<td>أي شكل/مصنّع — انظر الشكلين 1 و2</td>
+</tr>
+<tr>
+<td>مقاومة 10KΩ</td>
+<td>3</td>
+<td>للسحب للأسفل (المرحلة الثانية فقط)</td>
+</tr>
+<tr>
+<td>محرك سيرفو</td>
+<td>1</td>
+<td>قفل الخزنة في المشروع الختامي</td>
+</tr>
+<tr>
+<td>LED أخضر + LED أحمر</td>
+<td>1 + 1</td>
+<td>مؤشر الصحيح/الخطأ</td>
+</tr>
+<tr>
+<td>مقاومة 220Ω</td>
+<td>2</td>
+<td>للـ LED</td>
+</tr>
+<tr>
+<td>Breadboard + أسلاك توصيل</td>
+<td>-</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="matrix-keypad">🧠 الجزء الأول: ما هي لوحة المفاتيح المصفوفية (Matrix Keypad)؟</h2>
+<p>تخيل مدينة شوارعها متعامدة: شوارع <strong>أفقية</strong> تمتد من الشرق للغرب، وشوارع <strong>رأسية</strong> من الشمال للجنوب. أي بيت في المدينة يمكن تحديد عنوانه بجملة واحدة: <em>"تقاطع الشارع الأفقي الثاني مع الشارع الرأسي الثالث"</em>.</p>
+<p>لوحة المفاتيح المصفوفية تعمل بنفس الفكرة تماماً! بدلاً من إعطاء كل زر سلكاً خاصاً به، رُتّبت الأزرار على <strong>شبكة من الأسلاك المتقاطعة</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>          C1      C2      C3
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>          |       |       |
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>R1 --  [ 1 ]   [ 2 ]   [ 3 ]
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>          |       |       |
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>R2 --  [ 4 ]   [ 5 ]   [ 6 ]
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>          |       |       |
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>R3 --  [ 7 ]   [ 8 ]   [ 9 ]
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>          |       |       |
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>R4 --  [ * ]   [ 0 ]   [ # ]
+</code></pre></div>
+<p>كل زر يقع عند <strong>تقاطع</strong> سلك أفقي (نسميه <strong>صف Row</strong>) وسلك رأسي (نسميه <strong>عمود Column</strong>). وهنا السحر: الزر رقم <code>5</code> مثلاً ليس إلا مفتاحاً صغيراً يصل داخلياً بين السلك <strong>R2</strong> والسلك <strong>C2</strong> عندما نضغطه!</p>
+<p><img alt="شكل لوحة المفاتيح المصفوفية 3×4" src="../img/parts/65a0b7d4d7ab4b1dcfcb522044a372c8a9bc3111.jpeg" />
+<strong>الشكل 1:</strong> شكل لوحة المفاتيح المصفوفية 3×4 (نموذج من أحد المصنّعين).</p>
+<p><img alt="مخطط أرجل لوحات المفاتيح 3×4 و 4×4" src="../img/parts/Arduino-Keypad-Tutorial-4X4-and-3X4-Keypad-Pin-Diagram.png" />
+<strong>الشكل 2:</strong> نموذج آخر من مصنّع مختلف — نفس الجزء تماماً من الداخل، مع مخطط ترتيب الأرجل للنوعين 3×4 و 4×4.</p>
+<blockquote>
+<p>💡 <strong>مفهوم مهم (الحيلة الرياضية):</strong>
+لو وصّلنا كل زر بسلك خاص، لاحتجنا <strong>12 سلكاً</strong> لـ 12 زراً.
+بالمصفوفة نحتاج فقط: <strong>4 صفوف + 3 أعمدة = 7 أرجل فقط!</strong>
+والأكثر إدهاشاً: اللوحة الأكبر 4×4 (بـ 16 زراً!) تحتاج <strong>8 أرجل فقط</strong>.
+كلما كبرت المصفوفة، وفّرنا أكثر — لهذا تستخدمها الكيبوردات ذات 104 أزرار!</p>
+</blockquote>
+<h3 id="_3">أرجل اللوحة:</h3>
+<p>ستلاحظ أن اللوحة تحتوي على <strong>7 أرجل فقط</strong>، ولا يوجد فيها <strong>VCC ولا GND</strong>! والسبب أنها تحتوي على أزرار فقط، والأزرار لا تحتاج طاقة بل تصل بين سلكين.</p>
+<table>
+<thead>
+<tr>
+<th>الرجل</th>
+<th>الوظيفة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>R1</strong></td>
+<td>سلك الصف الأول (الأزرار 1، 2، 3)</td>
+</tr>
+<tr>
+<td><strong>R2</strong></td>
+<td>سلك الصف الثاني (الأزرار 4، 5، 6)</td>
+</tr>
+<tr>
+<td><strong>R3</strong></td>
+<td>سلك الصف الثالث (الأزرار 7، 8، 9)</td>
+</tr>
+<tr>
+<td><strong>R4</strong></td>
+<td>سلك الصف الرابع (الأزرار *، 0، #)</td>
+</tr>
+<tr>
+<td><strong>C1</strong></td>
+<td>سلك العمود الأول (1، 4، 7، *)</td>
+</tr>
+<tr>
+<td><strong>C2</strong></td>
+<td>سلك العمود الثاني (2، 5، 8، 0)</td>
+</tr>
+<tr>
+<td><strong>C3</strong></td>
+<td>سلك العمود الثالث (3، 6، 9، #)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>ملاحظة مهمة (اختلاف المصنّعين):</strong>
+ترتيب الأرجل يختلف من مصنّع لآخر! في النوع الغشائي (Membrane) الشائع تكون الأرجل 1–4 هي الصفوف R1–R4 ثم الأرجل 5–7 هي الأعمدة C1–C3. <strong>راجع دائماً مخطط أرجل لوحتك (مثل الشكل 2)</strong>. ولو ظهرت الأزرار خاطئة على الشاشة عند التجربة، فالحل سهل جداً: بدّل الترتيب داخل جدولي <code>rowPins</code> و <code>colPins</code> في الكود — دون تغيير أي سلك!</p>
+</blockquote>
+<hr />
+<h2 id="_4">💻 الجزء الثاني: نبني الماسح بأيدينا (مع مقاومات السحب للأسفل)</h2>
+<p>كيف يعرف الأردوينو أي زر ضُغط؟ تذكرون منادي المدرسة الذي يستدعي الطلاب <strong>صفاً صفاً</strong>؟ سنفعل الشيء نفسه، وتسمى هذه العملية <strong>المسح (Scanning)</strong>:</p>
+<ol>
+<li>نشغّل <strong>الصف الأول فقط</strong> (R1) ونطفئ بقية الصفوف.</li>
+<li>نقرأ الأعمدة الثلاثة: إن وجدنا عموداً "مفعّلاً"، فقد وجدنا تقاطعاً — عرفنا الصف والعمود، وبالتالي عرفنا الزر!</li>
+<li>ننتقل للصف الثاني ونكرر.. وهكذا.</li>
+</ol>
+<h3 id="_5">📌 التوصيل:</h3>
+<p>نجعل الصفوف <strong>مخارج (Outputs)</strong> من الأردوينو، والأعمدة <strong>مداخل (Inputs)</strong>. وكل عمود يحتاج <strong>مقاومة 10KΩ سحب للأسفل</strong> إلى GND — تماماً كما فعلنا مع الزر في درس UART، حتى لا تبقى الرجل "هوائياً وهمياً" يقرأ قيماً عشوائية!</p>
+<table>
+<thead>
+<tr>
+<th>طرف لوحة المفاتيح</th>
+<th>رجل الأردوينو</th>
+<th>ملاحظة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>R1</strong></td>
+<td><strong>Pin 2</strong></td>
+<td>مخرج</td>
+</tr>
+<tr>
+<td><strong>R2</strong></td>
+<td><strong>Pin 3</strong></td>
+<td>مخرج</td>
+</tr>
+<tr>
+<td><strong>R3</strong></td>
+<td><strong>Pin 4</strong></td>
+<td>مخرج</td>
+</tr>
+<tr>
+<td><strong>R4</strong></td>
+<td><strong>Pin 5</strong></td>
+<td>مخرج</td>
+</tr>
+<tr>
+<td><strong>C1</strong></td>
+<td><strong>Pin 6</strong></td>
+<td>مدخل + مقاومة 10KΩ إلى GND</td>
+</tr>
+<tr>
+<td><strong>C2</strong></td>
+<td><strong>Pin 7</strong></td>
+<td>مدخل + مقاومة 10KΩ إلى GND</td>
+</tr>
+<tr>
+<td><strong>C3</strong></td>
+<td><strong>Pin 8</strong></td>
+<td>مدخل + مقاومة 10KΩ إلى GND</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="توصيل لوحة المفاتيح مع مقاومات السحب للأسفل" src="../img/connections/keypad_connection_with_pull_down_resistors.png" />
+<strong>الشكل 3:</strong> توصيل لوحة المفاتيح مع مقاومات السحب للأسفل (الطريقة اليدوية).</p>
+<h3 id="_6">📝 الكود:</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cm">/*</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cm"> * مشروع: قارئ لوحة المفاتيح المصفوفية - الطريقة اليدوية</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cm"> * نمسح الصفوف واحداً تلو الآخر، وعندما نجد عموداً مفعّلاً</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cm"> * نعرف الزر المضغوط من تقاطع (الصف × العمود)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cm"> */</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1">// أرجل الصفوف الأربعة (مخارج)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="kt">int</span><span class="w"> </span><span class="n">rowPins</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1">// أرجل الأعمدة الثلاثة (مداخل مع مقاومات سحب للأسفل)</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="kt">int</span><span class="w"> </span><span class="n">colPins</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">};</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1">// خريطة الأزرار: كل خانة تقابل تقاطع صف وعمود</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="kt">char</span><span class="w"> </span><span class="n">keys</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="p">{</span><span class="sc">&#39;1&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;2&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;3&#39;</span><span class="p">},</span><span class="w">   </span><span class="c1">// الصف الأول</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span><span class="p">{</span><span class="sc">&#39;4&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;5&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;6&#39;</span><span class="p">},</span><span class="w">   </span><span class="c1">// الصف الثاني</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">  </span><span class="p">{</span><span class="sc">&#39;7&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;8&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;9&#39;</span><span class="p">},</span><span class="w">   </span><span class="c1">// الصف الثالث</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">  </span><span class="p">{</span><span class="sc">&#39;*&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;#&#39;</span><span class="p">}</span><span class="w">    </span><span class="c1">// الصف الرابع</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="p">};</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="n">pinMode</span><span class="p">(</span><span class="n">rowPins</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="n">pinMode</span><span class="p">(</span><span class="n">colPins</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">INPUT</span><span class="p">);</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;جاهز! اضغط أي زر على لوحة المفاتيح:&quot;</span><span class="p">);</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="p">}</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">  </span><span class="c1">// نمسح صفاً واحداً في كل مرة</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">r</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">    </span><span class="c1">// نشغّل الصف الحالي ونطفئ بقية الصفوف</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">rowPins</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">      </span><span class="k">else</span><span class="w">        </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">rowPins</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">    </span><span class="c1">// نقرأ الأعمدة الثلاثة</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">colPins</span><span class="p">[</span><span class="n">c</span><span class="p">])</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">HIGH</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">        </span><span class="c1">// وجدنا تقاطعاً! الصف r مع العمود c</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;تم الضغط على: &quot;</span><span class="p">);</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">keys</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]);</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="w">        </span><span class="n">delay</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span><span class="w">  </span><span class="c1">// منع الارتداد (كما في درس UART)</span>
+<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="p">}</span>
+</code></pre></div>
+<strong>التطبيق:</strong> افتح <strong>Serial Monitor</strong> واضغط الأزرار واحداً واحداً، وراقب ظهور الرمز الصحيح لكل زر. لو ظهر رمز خاطئ، تذكّر ملاحظة ترتيب الأرجل في الجزء الأول!</p>
+<blockquote>
+<p>🧠 <strong>لماذا نضغط زراً واحداً في كل مرة؟</strong>
+أثناء التعلّم اضغط زراً واحداً فقط: الضغط على زرين في نفس العمود معاً قد يمرّر التيار من صف "مفعّل" إلى صف "مطفأ" فتظهر أزرار "أشباح". المكتبة الاحترافية في الجزء الثالث تتعامل مع هذا بذكاء أكبر.</p>
+</blockquote>
+<hr />
+<h2 id="keypad">⚡ الجزء الثالث: الطريقة الاحترافية — مكتبة Keypad بدون مقاومات!</h2>
+<p>بنينا الماسح بأيدينا لنفهم ما يجري في الخلفية.. لكن المهندسون المحترفون لديهم سر: داخل كل رجل في الأردوينو توجد <strong>مقاومة سحب للأعلى (Pull-Up) مخفية</strong> يمكن تفعيلها برمجياً بكلمة واحدة: <code>INPUT_PULLUP</code>!</p>
+<p>هذا يعني أننا نستطيع <strong>إلغاء المقاومات الخارجية الثلاث نهائياً</strong> والتوصيل مباشرة! فقط انتبه: المنطق سينقلب — <strong>غير المضغوط = HIGH، والمضغوط = LOW</strong>.</p>
+<p>لا تقلق من التعقيد: مكتبة <strong>Keypad</strong> تتولى كل شيء (المسح، مقاومات السحب الداخلية، منع الارتداد) وتعطينا دالة واحدة لطيفة: <code>getKey()</code>.</p>
+<h3 id="_7">📥 تثبيت المكتبة:</h3>
+<p>من Arduino IDE: <strong>Sketch ← Include Library ← Manage Libraries</strong> ثم ابحث عن <strong>Keypad</strong> (بواسطة Mark Stanley و Alexander Brevig) واضغط <strong>Install</strong>.</p>
+<h3 id="_8">📌 التوصيل (مباشر تماماً!):</h3>
+<table>
+<thead>
+<tr>
+<th>طرف لوحة المفاتيح</th>
+<th>رجل الأردوينو</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>R1, R2, R3, R4</strong></td>
+<td><strong>Pins 2, 3, 4, 5</strong></td>
+</tr>
+<tr>
+<td><strong>C1, C2, C3</strong></td>
+<td><strong>Pins 6, 7, 8</strong></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="توصيل لوحة المفاتيح مباشرة بدون مقاومات" src="../img/connections/key_pad_connection_directly.png" />
+<strong>الشكل 4:</strong> التوصيل المباشر بدون أي مقاومات (طريقة المكتبة الاحترافية).</p>
+<h3 id="_9">📝 الكود:</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cm">/*</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="cm"> * مشروع: قارئ لوحة المفاتيح - الطريقة الاحترافية</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cm"> * باستخدام مكتبة Keypad: بدون أي مقاومات خارجية!</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cm"> */</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Keypad.h&gt;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">const</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">ROWS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w">  </span><span class="c1">// أربعة صفوف</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">const</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">COLS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w">  </span><span class="c1">// ثلاثة أعمدة</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1">// خريطة الأزرار</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="kt">char</span><span class="w"> </span><span class="n">keys</span><span class="p">[</span><span class="n">ROWS</span><span class="p">][</span><span class="n">COLS</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">  </span><span class="p">{</span><span class="sc">&#39;1&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;2&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;3&#39;</span><span class="p">},</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">  </span><span class="p">{</span><span class="sc">&#39;4&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;5&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;6&#39;</span><span class="p">},</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">  </span><span class="p">{</span><span class="sc">&#39;7&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;8&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;9&#39;</span><span class="p">},</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">  </span><span class="p">{</span><span class="sc">&#39;*&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;#&#39;</span><span class="p">}</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="p">};</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="n">byte</span><span class="w"> </span><span class="n">rowPins</span><span class="p">[</span><span class="n">ROWS</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span><span class="w">  </span><span class="c1">// الصفوف</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="n">byte</span><span class="w"> </span><span class="n">colPins</span><span class="p">[</span><span class="n">COLS</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">};</span><span class="w">     </span><span class="c1">// الأعمدة</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="c1">// إنشاء كائن اللوحة: يقرأ الأزرار نيابةً عنا</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="n">Keypad</span><span class="w"> </span><span class="n">keypad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Keypad</span><span class="p">(</span><span class="n">makeKeymap</span><span class="p">(</span><span class="n">keys</span><span class="p">),</span><span class="w"> </span><span class="n">rowPins</span><span class="p">,</span><span class="w"> </span><span class="n">colPins</span><span class="p">,</span><span class="w"> </span><span class="n">ROWS</span><span class="p">,</span><span class="w"> </span><span class="n">COLS</span><span class="p">);</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;جاهز! اضغط أي زر:&quot;</span><span class="p">);</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="p">}</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">keypad</span><span class="p">.</span><span class="n">getKey</span><span class="p">();</span><span class="w">  </span><span class="c1">// يعيد الزر المضغوط، أو لا شيء</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                   </span><span class="c1">// إذا ضُغط زر فعلاً</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;تم الضغط على: &quot;</span><span class="p">);</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="p">}</span>
+</code></pre></div>
+<strong>التطبيق:</strong> جرّب نفس التجربة السابقة — نفس النتيجة، لكن بثلاث مقاومات أقل وبدون أي وميض أزرار أشباح! قارن سرعة كتابة هذا الكود بالكود اليدوي.. لهذا يحب المهندسون المكتبات.</p>
+<hr />
+<h2 id="_10">🔐 الجزء الرابع: الخزنة السرية — قفل بكلمة مرور (مشروع ختامي)</h2>
+<p>الآن نجمع كل ما تعلمناه: لوحة المفاتيح لإدخال كلمة سر من 4 أرقام، <strong>السيرفو</strong> (من درس المقاومة المتغيرة) يفتح القفل، وLED أخضر وأحمر لإخبارنا بالنتيجة. هذا هو قلب أي نظام أمان حقيقي!</p>
+<h3 id="_11">الفكرة:</h3>
+<ul>
+<li>نحفظ كل رقم نضغطه في متغير <code>input</code> (متغير الحالة — مثل <code>motorState</code> في درس المحركات).</li>
+<li>عند اكتمال 4 أرقام نقارن مع كلمة السر السرية.</li>
+<li>صحيحة → السيرفو يدور 90° ويضيء LED أخضر 5 ثوانٍ، ثم يُغلق القفل.</li>
+<li>خاطئة → يومض LED الأحمر ونبدأ من جديد.</li>
+<li>زر <code>*</code> يمسح كل ما أدخلناه لنبدأ من جديد.</li>
+</ul>
+<h3 id="4">📌 التوصيل الإضافي (فوق توصيل لوحة المفاتيح المباشر من الشكل 4):</h3>
+<table>
+<thead>
+<tr>
+<th>المكوّن</th>
+<th>التوصيل</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>سلك إشارة السيرفو (البرتقالي غالباً)</td>
+<td><strong>Pin 11</strong></td>
+</tr>
+<tr>
+<td>سلكا طاقة السيرفو (أحمر/بني)</td>
+<td>5V / GND</td>
+</tr>
+<tr>
+<td>LED أخضر (+)</td>
+<td><strong>Pin 12</strong> عبر مقاومة 220Ω ثم GND</td>
+</tr>
+<tr>
+<td>LED أحمر (+)</td>
+<td><strong>Pin 13</strong> عبر مقاومة 220Ω ثم GND</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_12">📝 الكود:</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cm">/*</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="cm"> * مشروع: الخزنة السرية - قفل بكلمة مرور</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="cm"> * أدخل 4 أرقام صحيحة ليدور السيرفو ويُفتح القفل</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="cm"> * زر * يمسح الإدخال، ونستخدم متغير حالة (input) لتتبع ما أُدخل</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="cm"> */</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Keypad.h&gt;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Servo.h&gt;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">const</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">ROWS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="k">const</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">COLS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="kt">char</span><span class="w"> </span><span class="n">keys</span><span class="p">[</span><span class="n">ROWS</span><span class="p">][</span><span class="n">COLS</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">  </span><span class="p">{</span><span class="sc">&#39;1&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;2&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;3&#39;</span><span class="p">},</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">  </span><span class="p">{</span><span class="sc">&#39;4&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;5&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;6&#39;</span><span class="p">},</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">  </span><span class="p">{</span><span class="sc">&#39;7&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;8&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;9&#39;</span><span class="p">},</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">  </span><span class="p">{</span><span class="sc">&#39;*&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;#&#39;</span><span class="p">}</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="p">};</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="n">byte</span><span class="w"> </span><span class="n">rowPins</span><span class="p">[</span><span class="n">ROWS</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="n">byte</span><span class="w"> </span><span class="n">colPins</span><span class="p">[</span><span class="n">COLS</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">};</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="n">Keypad</span><span class="w"> </span><span class="n">keypad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Keypad</span><span class="p">(</span><span class="n">makeKeymap</span><span class="p">(</span><span class="n">keys</span><span class="p">),</span><span class="w"> </span><span class="n">rowPins</span><span class="p">,</span><span class="w"> </span><span class="n">colPins</span><span class="p">,</span><span class="w"> </span><span class="n">ROWS</span><span class="p">,</span><span class="w"> </span><span class="n">COLS</span><span class="p">);</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="n">Servo</span><span class="w"> </span><span class="n">lockServo</span><span class="p">;</span><span class="w">              </span><span class="c1">// سيرفو القفل</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="kt">int</span><span class="w"> </span><span class="n">greenLED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="kt">int</span><span class="w"> </span><span class="n">redLED</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">13</span><span class="p">;</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="n">String</span><span class="w"> </span><span class="n">secretCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span><span class="w">   </span><span class="c1">// كلمة السر السرية (غيّرها كما تحب!)</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="n">String</span><span class="w"> </span><span class="n">input</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w">       </span><span class="c1">// ما أدخله المستخدم حتى الآن</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="kt">void</span><span class="w"> </span><span class="nf">openDoor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">  </span><span class="n">lockServo</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="mi">90</span><span class="p">);</span><span class="w">                    </span><span class="c1">// افتح القفل</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">greenLED</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;كلمة السر صحيحة! الخزنة مفتوحة ✅&quot;</span><span class="p">);</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="p">}</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="kt">void</span><span class="w"> </span><span class="nf">closeDoor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="w">  </span><span class="n">lockServo</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">                     </span><span class="c1">// أغلق القفل</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">greenLED</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;أُغلقت الخزنة 🔒&quot;</span><span class="p">);</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a><span class="p">}</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a>
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a><span class="kt">void</span><span class="w"> </span><span class="nf">wrongCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a><span class="w">  </span><span class="c1">// وميض أحمر ثلاث مرات</span>
+<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a><span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">redLED</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span><span class="w"> </span><span class="n">delay</span><span class="p">(</span><span class="mi">150</span><span class="p">);</span>
+<a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a><span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">redLED</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">150</span><span class="p">);</span>
+<a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;كلمة سر خاطئة! حاول مجدداً ❌&quot;</span><span class="p">);</span>
+<a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a><span class="p">}</span>
+<a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a>
+<a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">greenLED</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">redLED</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a><span class="w">  </span><span class="n">lockServo</span><span class="p">.</span><span class="n">attach</span><span class="p">(</span><span class="mi">11</span><span class="p">);</span>
+<a id="__codelineno-3-57" name="__codelineno-3-57" href="#__codelineno-3-57"></a><span class="w">  </span><span class="n">lockServo</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">                     </span><span class="c1">// نبدأ والقفل مغلق</span>
+<a id="__codelineno-3-58" name="__codelineno-3-58" href="#__codelineno-3-58"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<a id="__codelineno-3-59" name="__codelineno-3-59" href="#__codelineno-3-59"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;أدخل كلمة السر المكوّنة من 4 أرقام:&quot;</span><span class="p">);</span>
+<a id="__codelineno-3-60" name="__codelineno-3-60" href="#__codelineno-3-60"></a><span class="p">}</span>
+<a id="__codelineno-3-61" name="__codelineno-3-61" href="#__codelineno-3-61"></a>
+<a id="__codelineno-3-62" name="__codelineno-3-62" href="#__codelineno-3-62"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-63" name="__codelineno-3-63" href="#__codelineno-3-63"></a><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">keypad</span><span class="p">.</span><span class="n">getKey</span><span class="p">();</span>
+<a id="__codelineno-3-64" name="__codelineno-3-64" href="#__codelineno-3-64"></a>
+<a id="__codelineno-3-65" name="__codelineno-3-65" href="#__codelineno-3-65"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-66" name="__codelineno-3-66" href="#__codelineno-3-66"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">key</span><span class="p">);</span><span class="w">                  </span><span class="c1">// نعرض كل ضغطة</span>
+<a id="__codelineno-3-67" name="__codelineno-3-67" href="#__codelineno-3-67"></a>
+<a id="__codelineno-3-68" name="__codelineno-3-68" href="#__codelineno-3-68"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">key</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;*&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                     </span><span class="c1">// زر المسح</span>
+<a id="__codelineno-3-69" name="__codelineno-3-69" href="#__codelineno-3-69"></a><span class="w">      </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-70" name="__codelineno-3-70" href="#__codelineno-3-70"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;بدأنا الإدخال من جديد...&quot;</span><span class="p">);</span>
+<a id="__codelineno-3-71" name="__codelineno-3-71" href="#__codelineno-3-71"></a><span class="w">      </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-3-72" name="__codelineno-3-72" href="#__codelineno-3-72"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-73" name="__codelineno-3-73" href="#__codelineno-3-73"></a>
+<a id="__codelineno-3-74" name="__codelineno-3-74" href="#__codelineno-3-74"></a><span class="w">    </span><span class="n">input</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">key</span><span class="p">;</span><span class="w">                         </span><span class="c1">// نضيف الرقم للمخزن</span>
+<a id="__codelineno-3-75" name="__codelineno-3-75" href="#__codelineno-3-75"></a>
+<a id="__codelineno-3-76" name="__codelineno-3-76" href="#__codelineno-3-76"></a><span class="w">    </span><span class="c1">// عند اكتمال 4 أرقام نفحص كلمة السر</span>
+<a id="__codelineno-3-77" name="__codelineno-3-77" href="#__codelineno-3-77"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-78" name="__codelineno-3-78" href="#__codelineno-3-78"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">secretCode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-79" name="__codelineno-3-79" href="#__codelineno-3-79"></a><span class="w">        </span><span class="n">openDoor</span><span class="p">();</span>
+<a id="__codelineno-3-80" name="__codelineno-3-80" href="#__codelineno-3-80"></a><span class="w">        </span><span class="n">delay</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span><span class="w">                      </span><span class="c1">// نتركها مفتوحة 5 ثوانٍ</span>
+<a id="__codelineno-3-81" name="__codelineno-3-81" href="#__codelineno-3-81"></a><span class="w">        </span><span class="n">closeDoor</span><span class="p">();</span>
+<a id="__codelineno-3-82" name="__codelineno-3-82" href="#__codelineno-3-82"></a><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-83" name="__codelineno-3-83" href="#__codelineno-3-83"></a><span class="w">        </span><span class="n">wrongCode</span><span class="p">();</span>
+<a id="__codelineno-3-84" name="__codelineno-3-84" href="#__codelineno-3-84"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-3-85" name="__codelineno-3-85" href="#__codelineno-3-85"></a><span class="w">      </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w">                         </span><span class="c1">// نبدأ من جديد في الحالتين</span>
+<a id="__codelineno-3-86" name="__codelineno-3-86" href="#__codelineno-3-86"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-87" name="__codelineno-3-87" href="#__codelineno-3-87"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-3-88" name="__codelineno-3-88" href="#__codelineno-3-88"></a><span class="p">}</span>
+</code></pre></div>
+<strong>التطبيق:</strong> جرّب كلمة السر الصحيحة <code>1234</code> ثم جرّب كلمة خاطئة ولاحظ الفرق. ثم غيّر <code>secretCode</code> في الكود واصنع خزنتك الخاصة — وأخفِ الشاشة عن أصدقائك وتحدَّهم بفتحها! 🔐</p>
+<hr />
+<h2 id="_13">🏋️‍♂️ تمارين وتحديات تطبيقية</h2>
+<h3 id="_14">🎯 التمرين الأول: شاشة عرض رقمية 🖥️</h3>
+<p><strong>المطلوب:</strong> اعرض آخر رقم ضغطته على <strong>شاشة الأرقام السباعية</strong> من الدرس الأول، باستخدام جدول المنطق الذي بنيته سابقاً.</p>
+<h3 id="_15">🎯 التمرين الثاني: لوحة تحكم سرعة المحرك 🚗</h3>
+<p><strong>المطلوب:</strong> ادمج درس <strong>L9110S</strong>: اجعل الأرقام من 1 إلى 9 تتحكم بسرعة المحرك (حوّلها بـ <code>map()</code> من 1–9 إلى 0–255 وطبّقها بـ <code>analogWrite</code>)، واجعل زر <code>#</code> زر التوقف. لقد بنيتَ "عصا تحكم" حقيقية!</p>
+<h3 id="_16">🎯 التمرين الثالث: منظومة أمان ذكية 🌡️</h3>
+<p><strong>المطلوب:</strong> ادمج ثلاثة دروس معاً! استخدم لوحة المفاتيح لتحديد <strong>حد إنذار الحرارة</strong> في درس LM35 (بدل تعديله من الكود كل مرة)، ثم أرسل قراءة الحرارة عبر <strong>UART</strong> إلى أردوينو آخر يعرضها.</p>
+<hr />
+<h2 id="_17">📝 ملخص الدرس</h2>
+<table>
+<thead>
+<tr>
+<th>النقطة</th>
+<th>الشرح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>المصفوفة (Matrix)</strong></td>
+<td>ترتيب الأزرار على شبكة صفوف×أعمدة: 12 زراً بـ 7 أرجل فقط بدل 12.</td>
+</tr>
+<tr>
+<td><strong>المسح (Scanning)</strong></td>
+<td>نفعّل صفاً واحداً ونقرأ الأعمدة، ثم ننتقل للصف التالي — مثل منادي المدرسة.</td>
+</tr>
+<tr>
+<td><strong>الزر = تقاطع</strong></td>
+<td>الضغط على زر يوصل داخلياً بين سلك صفّه وسلك عموده.</td>
+</tr>
+<tr>
+<td><strong>السحب للأسفل</strong></td>
+<td>مقاومة 10KΩ لكل عمود تمنع القراءات العشوائية (نفس فكرة درس UART).</td>
+</tr>
+<tr>
+<td><strong>INPUT_PULLUP</strong></td>
+<td>مقاومة سحب للأعلى "مخفية" داخل الأردوينو — تلغي المقاومات الخارجية ويعمل المنطق معكوساً.</td>
+</tr>
+<tr>
+<td><strong>مكتبة Keypad</strong></td>
+<td>تتولى المسح ومقاومات السحب الداخلية ومنع الارتداد، وتعطينا <code>getKey()</code> جاهزة.</td>
+</tr>
+<tr>
+<td><strong>مشروع الختام</strong></td>
+<td>خزنة بكلمة سر: متغير حالة <code>input</code> + سيرفو + مؤشرات LED.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_18">🎓 حقائق علمية ومهنية!</h2>
+<ul>
+<li>⌨️ <strong>كيبورد الكمبيوتر أمامك مصفوفة أيضاً!</strong> لوحة بـ 104 أزرار تعمل بأسلاك قليلة عبر نفس فكرة المسح؛ ولهذا في الكيبوردات الرخيصة يظهر "Ghosting" (أزرار أشباح) عند ضغط عدة أزرار معاً — وكيبوردات الألعاب تضع ديودات صغيرة لمنعه (تقنية Anti-Ghosting).</li>
+<li>🏧 الصراف الآلي (ATM) وأقفال غرف الفنادق تستخدم لوحات مفاتيح مطابقة تقريباً لما جربته اليوم، مع نفس فكرة كلمة المرور في مشروعنا الختامي!</li>
+<li>🧮 حاسبات الجيب القديمة كانت أول من استخدم المسح المصفوفي لتوفير الأسلاك — والأهم: <strong>توفير طاقة البطارية</strong>، فالأزرار لا تُفحص إلا عند الحاجة.</li>
+</ul>
+<hr />
+<blockquote>
+<p>🚀 <strong>أحسنتم!</strong> أصبح الأردوينو الآن يسمع <strong>اثني عشر صوتاً</strong> عبر سبعة أسلاك فقط، ويحرس أسراركم بخزنة لا تُفتح إلا بكلمة السر! جرّبوا دمج هذا الدرس مع ما سبق لبناء مشاريعكم الخاصة. بالتوفيق في المعمل! ⚡💻🔧</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  عد إلى الأعلى
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u062a\u0645 \u0627\u0644\u0646\u0633\u062e \u0627\u0644\u0649 \u0627\u0644\u062d\u0627\u0641\u0638\u0629", "clipboard.copy": "\u0646\u0633\u062e \u0625\u0644\u0649 \u0627\u0644\u062d\u0627\u0641\u0638\u0629", "search.result.more.one": "\u0623\u0643\u062b\u0631 \u0645\u0646 1 \u0641\u064a \u0647\u0630\u0647 \u0627\u0644\u0635\u0641\u062d\u0629", "search.result.more.other": "\u0623\u0643\u062b\u0631 \u0645\u0646 # \u0641\u064a \u0647\u0630\u0647 \u0627\u0644\u0635\u0641\u062d\u0629", "search.result.none": "\u0644\u0627 \u062a\u0648\u062c\u062f \u0646\u062a\u0627\u0626\u062c", "search.result.one": "\u0646\u062a\u0627\u0626\u062c \u0627\u0644\u0628\u062d\u062b \u0645\u0633\u062a\u0646\u062f \u0648\u0627\u062d\u062f", "search.result.other": "\u0646\u062a\u0627\u0626\u062c \u0627\u0644\u0628\u062d\u062b # \u0645\u0633\u062a\u0646\u062f\u0627\u062a", "search.result.placeholder": "\u0627\u0643\u062a\u0628 \u0644\u0628\u062f\u0621 \u0627\u0644\u0628\u062d\u062b", "search.result.term.missing": "\u0645\u0641\u0642\u0648\u062f", "select.version": "\u0625\u062e\u062a\u0631 \u0627\u0644\u0625\u0635\u062f\u0627\u0631"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

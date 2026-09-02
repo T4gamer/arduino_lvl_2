@@ -2,26 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://T4gamer.github.io/arduino_lvl_2/</loc>
-         <lastmod>2026-08-30</lastmod>
+         <lastmod>2026-09-02</lastmod>
     </url>
     <url>
          <loc>https://T4gamer.github.io/arduino_lvl_2/L9110S_motor_driver/</loc>
-         <lastmod>2026-08-30</lastmod>
+         <lastmod>2026-09-02</lastmod>
     </url>
     <url>
          <loc>https://T4gamer.github.io/arduino_lvl_2/UART_Serial_Buttons_Lesson/</loc>
-         <lastmod>2026-08-30</lastmod>
+         <lastmod>2026-09-02</lastmod>
     </url>
     <url>
          <loc>https://T4gamer.github.io/arduino_lvl_2/lm35/</loc>
-         <lastmod>2026-08-30</lastmod>
+         <lastmod>2026-09-02</lastmod>
+    </url>
+    <url>
+         <loc>https://T4gamer.github.io/arduino_lvl_2/matrix_keypad_3x4/</loc>
+         <lastmod>2026-09-02</lastmod>
     </url>
     <url>
          <loc>https://T4gamer.github.io/arduino_lvl_2/servo_potentiometer/</loc>
-         <lastmod>2026-08-30</lastmod>
+         <lastmod>2026-09-02</lastmod>
     </url>
     <url>
          <loc>https://T4gamer.github.io/arduino_lvl_2/seven_segment_guide/</loc>
-         <lastmod>2026-08-30</lastmod>
+         <lastmod>2026-09-02</lastmod>
     </url>
 </urlset>
