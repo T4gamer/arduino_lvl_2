@@ -60,3 +60,4 @@ nav:
       - مستشعر الحرارة LM35: lm35.md
       - التواصل التسلسلي UART: UART_Serial_Buttons_Lesson.md
       - بطاقة تحريك المحركات L9110S: L9110S_motor_driver.md
+      - لوحة المفاتيح المصفوفية 3×4: matrix_keypad_3x4.md
